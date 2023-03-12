@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVC.Models.Proizvod>
+
+@{
+    ViewBag.Title = "Proizvodi";
+}
+
+<h2>Pregled proizvoda</h2>
+
+<p>
+    @Html.ActionLink("Unesite novi proizvod", "Unesi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proizvodjac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvodjac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Izmeni", new { id = item.Id }) |
+                @Html.ActionLink("Detalji", "Detalji", new { id = item.Id }) |
+                @Html.ActionLink("Obrisi", "Obrisi", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
